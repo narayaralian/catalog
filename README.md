@@ -63,51 +63,51 @@ After you login with your Google account, you should be able to create, edit and
 
 ### JSON Endpoints
 
-**/catalog/JSON** - returns JSON of all existing catalogs 
+`/catalog/JSON` - returns JSON of all existing catalogs 
 
-**/catalog/<int:catalogid>/items/JSON** or **/catalog/<int:catalogid>/JSON** - return JSON of all items in a catalog
+`/catalog/<int:catalogid>/items/JSON` or `/catalog/<int:catalogid>/JSON` - return JSON of all items in a catalog
 
-**/catalog/<int:catalogid>/items/<int:itemid>/JSON** or **/catalog/<int:catalogid>/<int:itemid>/JSON** - return JSON of a particular item
+`/catalog/<int:catalogid>/items/<int:itemid>/JSON` or `/catalog/<int:catalogid>/<int:itemid>/JSON` - return JSON of a particular item
 
-**/catalog/category/<int:categoryid>/JSON** - returns JSON of the items selected by a category
+`/catalog/category/<int:categoryid>/JSON` - returns JSON of the items selected by a category
 
 ### REST Endpoints
 
 #### Manage Catalogs
 
-**/** or **/catalog/** return the list of all existing catalogs 
+`/catalog/` return the list of all existing catalogs 
 
-**/catalog/new/** can be accessed by logged in users to create a new catalog 
+`/catalog/new/` can be accessed by logged in users to create a new catalog 
 
-**/catalog/<int:catalogid>/edit/** can be accessed by logged in users to edit a selected catalog 
+`/catalog/<int:catalogid>/edit/` can be accessed by logged in users to edit a selected catalog 
 
-**/catalog/<int:catalogid>/delete/** can be accessed by logged in users to delete a catalog 
+`/catalog/<int:catalogid>/delete/` can be accessed by logged in users to delete a catalog 
 
 #### Manage Items
 
-**/catalog/<int:catalogid>/** or  **/catalog/<int:catalogid>/items/** return the list of all items in the catalog 
+`/catalog/<int:catalogid>/` or  `/catalog/<int:catalogid>/items/` return the list of all items in the catalog 
 
-**/catalog/category/<int:categoryid>/<string:categoryname>/** returns the list of items selected by a category 
+`/catalog/category/<int:categoryid>/<string:categoryname>/` returns the list of items selected by a category 
 
-**/catalog/<int:catalogid>/items/new/** can be accessed by logged in users to add a new item to the catalog 
+`/catalog/<int:catalogid>/items/new/` can be accessed by logged in users to add a new item to the catalog 
 
-**/catalog/<int:catalogid>/items/<int:itemid>/edit/** can be accessed by logged in users to edit an item 
+`/catalog/<int:catalogid>/items/<int:itemid>/edit/` can be accessed by logged in users to edit an item 
 
-**/catalog/<int:catalogid>/items/<int:itemid>/delete/** can be accessed by logged in users to delete an item  
+`/catalog/<int:catalogid>/items/<int:itemid>/delete/` can be accessed by logged in users to delete an item  
 
-**/catalog/<int:catalogid>/<int:itemid>/** returns a detailed view for a particular item 
+`/catalog/<int:catalogid>/<int:itemid>/` returns a detailed view for a particular item 
 
 #### Manage Categories
 
-**/catalog/categories/new/ **  allows users to create a new category as well as returns a list of all categories owned by the current user with edit/delete options 
+`/catalog/categories/new/`  allows users to create a new category as well as returns a list of all categories owned by the current user with edit/delete options 
 
-**/catalog/<int:categoryid>/editcategory/**  allows users to edit their own categories 
+`/catalog/<int:categoryid>/editcategory/`  allows users to edit their own categories 
 
-**/catalog/<int:categoryid>/deletecategory/** allows users to delete their own categories
+`/catalog/<int:categoryid>/deletecategory/` allows users to delete their own categories
 
 #### Login
 
-**/gconnect** allows users to sign in with thier Google accounts 
+`/gconnect` allows users to sign in with thier Google accounts 
 
 ## Deployment
 
@@ -124,8 +124,7 @@ Item Catalog App was developed for learning purposes only and is not intended to
 
 ## Authors
 
-* **Nara Yaralyan** - [LinkedIn](https://www.linkedin.com/in/nara-yaralyan-0b35a833/)
-                        [GitHub ] (https://github.com/narayaralian)
+* **Nara Yaralyan** - [LinkedIn](https://www.linkedin.com/in/nara-yaralyan-0b35a833/), [GitHub ] (https://github.com/narayaralian)
 
 ## License
 
