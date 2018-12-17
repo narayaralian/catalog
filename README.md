@@ -132,5 +132,5 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-* This tool was developed as part of the Udacity Full-Stack Web Development Program. Many thanks to the Udacity team for such a great program!
+* This tool was developed as part of the Udacity Full-Stack Web Development Program (https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). Many thanks to the Udacity team for such a great program!
 * Free stock photos from [Pexel] (https://www.pexels.com/) are used for this project.
