@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "row">
+    <div class = 'col-12 flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}          
+        <ul>
+        {% for message in messages %}
+            <li><strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    </div>	
+</div>
+
+
+<div class="row">
+    <div class=" list col-12">           
+            <div class="bg-white">                
+                <h1>Add a New Item to "{{catalog.name}}"</h1>
+                <div>
+                    <a href="{{url_for('newCategory')}}" class="button"> New Category</a>
+                </div>
+                <form action="{{url_for('newItem', catalogid=catalog.id)}}" method="POST"  enctype="multipart/form-data" >
+                Name: <input name = "name" type = "text" placeholder="" label="Name"></br>
+                Description: <input name = "description" type="text" placeholder="" label="Description"></br>
+                Price: <input name = "price" type="text" placeholder="" label="price"></br>
+                Category:
+                    <select name="category">
+                    {%for parent in category %}
+                    {%if parent.parentid is none %}
+                    <option value="{{parent.id}}" selected="" placeholder="{{parent.name}}">{{parent.name}}</option>
+                         {%for children in category %}
+                         {%if children.parentid == parent.id%}
+                           <option value="{{children.id}}" selected="" placeholder="{{children.name}}">{{children.name}}</option>
+                        {%endif%}
+                        {%endfor%}
+                   {%endif%}
+                    {%endfor%}
+                    </select> <br/>
+                 Choose a picture for this item : <input name = "file" type="file" placeholder="" label="Picture">  <br />
+                <input name = "new" type="submit" label = "submit">
+                <a href = '{{url_for('showItems', catalogid = catalog.id)}}' class="button"> Cancel </a>
+                </form>           
+            </div>
+    </div>
+</div>
+{% endblock %}
+

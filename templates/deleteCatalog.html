@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "row">
+    <div class = 'col-12 flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}          
+        <ul>
+        {% for message in messages %}
+            <li><strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    </div>	
+</div>
+
+<div class="row">
+    <div class = "list col-6">
+         <h2> Are you sure you want to delete {{catalog.name}}? </h2>
+         <div class="bg-white">
+            <form action="{{url_for('deleteCatalog', catalogid=catalog.id)}}" method="POST">
+            <input name="delete" value="yes" type="submit">
+            <input name="delete" value="no" type="submit">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

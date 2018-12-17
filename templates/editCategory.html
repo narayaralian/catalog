@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "row">
+    <div class = 'col-12 flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}          
+        <ul>
+        {% for message in messages %}
+            <li><strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    </div>	
+</div>
+
+<div class="row">
+     <div class=" list col-12">   
+        <div>
+            <h1>Edit "{{category.name}}"</h1>
+            <form action="{{url_for('editCategory', categoryid = category.id)}}" method="POST">
+                Name: <input name = "name" type = "text"  value="{{category.name}}"  placeholder="{{category.name}}" label="Name"></br>
+                Parent category:
+                    <select name="category">
+                    <option value="" placeholder=""></option>
+                    {%for parent in allcategories %}
+                    {%if parent.parentid is none %}
+                    <option value="{{parent.id}}" {%if parent.id == category.parentid %} selected {%endif%} placeholder="{{parent.name}}">{{parent.name}}</option>
+                         {%for children in allcategories %}
+                         {%if children.parentid == parent.id%}
+                           <option value="{{children.id}}" {%if children.id == category.parentid %} selected {%endif%} placeholder="{{children.name}}">{{children.name}}</option>
+                        {%endif%}
+                        {%endfor%}
+                   {%endif%}
+                    {%endfor%}
+                    </select> <br/>
+                <input name = "edit" type="submit" label = "submit">
+                <a href = '{{url_for('newCategory')}}' class="button"> Cancel </a>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

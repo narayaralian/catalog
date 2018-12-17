@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">    
+	<head>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>	
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/normalize.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+            <script>
+            $(document).ready(function(){
+            $("button.collapse").click(function(){
+            $("ul.catmenu").toggle();
+                });
+            });
+            </script>
+            <noscript>
+            <style>
+            ul.catmenu {
+                display:block;   
+            }
+            </style>
+            </noscript>
+	</head>
+	<body>
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</body>
+</html>

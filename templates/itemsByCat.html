@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="row">
+    	<div class="col-12">
+        <button class="collapse">Search through all catalogs by categories</button>
+        <!-- Category menu start -->
+        <ul class="catmenu">
+            {%for parent in categories %}  
+            {%if parent.parentid is none %}
+            <li> <a href="{{url_for('showItemsByCat', categoryid = parent.id, categoryname = parent.name)}}" title="{{parent.name}}" class="parent">{{parent.name}}</a></li>       
+                {%for children in categories %}
+                <ul>
+                    {%if children.parentid == parent.id%}
+                    <li> <a href="{{url_for('showItemsByCat', categoryid = children.id, categoryname = children.name)}}" title="{{children.name}}"   class="child"> {{children.name}} </a> </li>
+                    {%endif%}
+                </ul>
+                 {%endfor%}
+            {%endif%}
+            {%endfor%}
+        </ul>
+        <!-- Category menu end -->        
+    </div>	
+
+<div class = "row">
+    <div class = 'col-12 flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}          
+        <ul>
+        {% for message in messages %}
+            <li><strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    </div>	
+</div>
+
+
+<div class="row">			
+	<div class=" list col-12">
+             <h1>Category: {{categoryname}}</h1> 
+                {% for item in items %}
+                <div class="item bg-white">
+                    <h2><a href = "{{url_for('showItemDetail', catalogid = item.catalog.id, itemid = item.id)}}" title = "item.name">  {{ item.name }}</a></h2>
+                    <p> 
+                   <a href = "{{url_for('showItemDetail', catalogid = item.catalog.id, itemid = item.id)}}" title = "item.name">  <img src="/static/image/{{item.picture|default('placeholder.jpeg')}}"> </a>                  
+                    {{item.description|truncate(150, False, '...', 0) }}  <br />
+                    {{item.price}}<br />
+                    </p>
+                     <p><a href = "{{url_for('showItemDetail', catalogid = item.catalog.id, itemid = item.id)}}" title = "item.name"> More >>> </a></p>
+                    <p>
+                    Category:  <a href="{{url_for('showItemsByCat', categoryid = item.categoryid , categoryname = categoryname)}}">  {{categoryname}}</a><br />
+                    Catalog:<a href="{{url_for('showItems', catalogid = item.catalog.id)}}"> {{item.catalog.name}}</a>
+                    </p>
+                </div>
+               {%endfor%}        
+    </div>
+    <div class="col-12">
+            <!-- Go back to the Catalog List-->
+            <a href="{{ url_for('showCatalogs') }}" class="button">Back to the Catalog List</a>
+    </div>
+</div>
+{%endblock%}

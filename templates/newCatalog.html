@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = "row">
+    <div class = 'col-12 flash'>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}          
+        <ul>
+        {% for message in messages %}
+            <li><strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    </div>	
+</div>
+
+<div class = "row">    
+    <div class="list col-6">
+        <h1>Create a New Catalog</h1> 
+            <div>
+                <form action="{{url_for('newCatalog')}}" method="POST" enctype="multipart/form-data" >
+               Catalog name: <input name = "name" type = "text" placeholder="" label="Name"></br>               
+               Description: <input name = "description" type = "text" placeholder="" label="Description"></br>
+               Choose a cover picture for your catalog : <input name = "file" type="file" placeholder="" label="Picture">  <br />
+                <input name = "new" type="submit" label = "submit">
+                <a href = '{{url_for('showCatalogs')}}' class="button"> Cancel </a>
+                </form>
+             </div>
+    </div>
+</div>
+{% endblock %}
